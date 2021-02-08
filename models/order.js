@@ -34,7 +34,10 @@ OrderSchema.methods.sendSmsNotification = function(message, statusCallback) {
 OrderSchema.methods.sendEmailNotification = function(message) {
   const options = {
     to: this.customerEmail,
-    from: config.sendgridEmail,
+    from: {
+      email: config.sendgridEmail,
+      name: "The Laundr.io Team"
+    },
     subject: 'Your Laundr.io order',
     text: `Dear ${this.customerName},\n\n${message}\n\nFrom the Laundr.io team`
   };
