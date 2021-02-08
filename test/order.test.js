@@ -35,17 +35,26 @@ function createMessageRequest() {
     });
 }
 
+function createEmailRequest() {
+  return nock('https://api.sendgrid.com').
+    post(/\/v3\/mail\/send/).
+    reply(202, "");
+}
+
 describe('order', function() {
   let order = {};
   const orders = [
     {customerName: 'Vincent Vega', customerPhoneNumber: '+17654532001',
-     status: 'Ready', notificationStatus: 'None'},
+     status: 'Ready', notificationStatus: 'None',
+     customerEmail: 'vincent@example.com'},
     {customerName: 'Mia Wallace', customerPhoneNumber: '+17654532002',
-     status: 'Ready', notificationStatus: 'None'},
+     status: 'Ready', notificationStatus: 'None',
+     customerEmail: 'mia@example.com'},
   ];
 
   beforeEach(function(done) {
     createMessageRequest();
+    createEmailRequest();
 
     Order.deleteMany().then(function() {
       return Order.collection.insertMany(orders);

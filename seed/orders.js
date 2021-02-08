@@ -6,12 +6,14 @@ const orders = [
     customerPhoneNumber: "+17654532001",
     status: "Ready",
     notificationStatus: "None",
+    customerEmail: "test@example.com",
   },
   {
     customerName: "Mia Wallace",
     customerPhoneNumber: "+17654532002",
     status: "Ready",
     notificationStatus: "None",
+    customerEmail: "test@example.com",
   },
 ];
 

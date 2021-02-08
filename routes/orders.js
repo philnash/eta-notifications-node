@@ -27,7 +27,11 @@ router.post('/:orderId/pickup', function(req, res) {
 
     order.save()
       .then(function() {
-        return order.sendSmsNotification('Your clothes will be sent and will be delivered in 20 minutes', getCallbackUri(req));
+        const message = 'Your clothes will be sent and will be delivered in 20 minutes'
+        return Promise.all([
+          order.sendSmsNotification(message, getCallbackUri(req)),
+          order.sendEmailNotification(message)
+        ]);
       })
       .then(function() {
         res.redirect(`/orders/${id}/show`);
@@ -48,7 +52,11 @@ router.post('/:orderId/deliver', function(req, res) {
       order.notificationStatus = 'Queued';
       order.save()
         .then(function() {
-          return order.sendSmsNotification('Your clothes have been delivered', getCallbackUri(req));
+          const message = 'Your clothes have been delivered';
+          return Promise.all([
+            order.sendSmsNotification(message, getCallbackUri(req)),
+            order.sendEmailNotification(message)
+          ]);
         })
         .then(function() {
           res.redirect(`/orders/${id}/show`);

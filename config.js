@@ -1,4 +1,4 @@
-require('dotenv-safe').config();
+require("dotenv-safe").config();
 
 module.exports = {
   // HTTP Port to run our web application
@@ -6,7 +6,7 @@ module.exports = {
 
   // A random string that will help generate secure one-time passwords and
   // HTTP sessions
-  secret: process.env.APP_SECRET || 'keyboard cat',
+  secret: process.env.APP_SECRET || "keyboard cat",
 
   // Your Twilio account SID and auth token, both found at:
   // https://www.twilio.com/user/account
@@ -19,4 +19,9 @@ module.exports = {
 
   // MongoDB connection string - MONGO_URL is for local dev,
   mongoUri: process.env.MONGO_URI,
+
+  // An email address you can send
+  sendgridEmail: process.env.SENDGRID_EMAIL,
+  // Your SendGrid API Key
+  sendgridApiKey: process.env.SENDGRID_API_KEY,
 };

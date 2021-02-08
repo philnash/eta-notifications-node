@@ -50,6 +50,8 @@ ETA notifications implementation with Node.js/Express and Twilio.
   You can find your `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` in your
   [Twilio Account Settings](https://www.twilio.com/user/account/settings).
 
+  You can create a SendGrid API key in the [SendGrid console](https://app.sendgrid.com/settings/api_keys). You will need to complete [single sender verification](https://sendgrid.com/docs/ui/sending-email/sender-verification/) or [domain authentication](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/) in order to use an email address with SendGrid.
+
 1. Seed the initial data into the database
 
    ```bash
